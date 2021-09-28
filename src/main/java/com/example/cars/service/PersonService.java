@@ -1,10 +1,9 @@
 package com.example.cars.service;
 
 import com.example.cars.model.Car;
-import com.example.cars.model.Message;
 import com.example.cars.model.Person;
 
-import java.util.List;
+import java.util.Optional;
 
 public interface PersonService {
 
@@ -14,7 +13,7 @@ public interface PersonService {
 
     void delete();
 
-//    Message poll();
+    Optional<Person> findById(long id);
 //
 //    Message peek();
 //

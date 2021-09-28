@@ -29,7 +29,6 @@ public class Car {
     private Integer horsepower;
 
     @JoinColumn(name = "person_id", nullable = false)
-//    @Column(name = "person_id")
     private Long person_id;
 }
 

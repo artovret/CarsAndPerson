@@ -22,9 +22,8 @@ public class Person {
     @Column(name = "birthdate")
     private Date birthdate;
 
-    @OneToMany(mappedBy = "person_id")
+    @OneToMany(mappedBy = "person_id",cascade = CascadeType.ALL)
 //    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
-//    @JoinColumn(name = "person_id")
     private List<Car> cars;
 }
 

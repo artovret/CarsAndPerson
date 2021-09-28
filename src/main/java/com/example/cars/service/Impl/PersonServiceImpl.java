@@ -1,17 +1,15 @@
 package com.example.cars.service.Impl;
 
 import com.example.cars.model.Car;
-import com.example.cars.model.Message;
 import com.example.cars.model.Person;
 import com.example.cars.repository.CarRepository;
 import com.example.cars.repository.PersonRepository;
 import com.example.cars.service.PersonService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -38,12 +36,11 @@ public class PersonServiceImpl implements PersonService {
         personRepository.deleteAll();
         //carRepository.deleteAll();
     }
-//
-//    @Override
-//    public Message peek() {
-//        log.warn("peek()");
-//        return personRepository.findTopByOrderByIdAsc();
-//    }
+
+    @Override
+    public Optional<Person> findById(long id) {
+        return personRepository.findById(id);
+    }
 //
 //    @Override
 //    public Message peekMax() {

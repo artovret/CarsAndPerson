@@ -1,26 +1,10 @@
-drop table if exists cars,persons;
+insert into persons (id, name, birthdate)
+values (1, 'Arti', '1994-11-11'),
+       (2, 'Max', '19841212'),
+       (33, 'Vlad', '1992-05-05');
 
-create table persons (
-                      id serial primary key ,
-                      name text,
-                      birthdate timestamp with time zone
-);
-
-create table cars (
-    id serial primary key ,
-    model text,
-    power integer,
-    person_id bigint,
-    foreign key (person_id) references persons (id)
-);
-
-insert into persons (name,birthdate) values
-                                            ('Arti','1994-11-11'),
-                                            ('Max','19841212'),
-                                            ('Vlad','1992-05-05');
-
-insert into cars (model,power,person_id) values
-    ('BMW',200,1),
-    ('BMW2',200,1),
-    ('LADA',100,2),
-    ('FERRARI',300,3);
+insert into cars (id, model, power, person_id)
+values (1, 'BMW', 200, 1),
+       (2, 'BMW2', 200, 1),
+       (3, 'LADA', 100, 2),
+       (4, 'FERRARI', 300, 33);

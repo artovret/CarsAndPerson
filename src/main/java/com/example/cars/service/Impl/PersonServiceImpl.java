@@ -9,13 +9,15 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
-
-@Service
 @Slf4j
+@Service
 @RequiredArgsConstructor
 public class PersonServiceImpl implements PersonService {
+
     private final PersonRepository personRepository;
     private final CarRepository carRepository;
 
@@ -34,23 +36,27 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public void delete() {
         personRepository.deleteAll();
-        //carRepository.deleteAll();
     }
 
     @Override
     public Optional<Person> findById(long id) {
         return personRepository.findById(id);
     }
-//
-//    @Override
-//    public Message peekMax() {
-//        log.warn("peekMax()");
-//        return personRepository.findTopOrderByMsgLength();
-//        //return null;
-//    }
-//
-//    @Override
-//    public List<Message> all() {
-//        return personRepository.findAll();
-//    }
+
+    @Override
+    public Long getPersonCount() {
+        return personRepository.count();
+    }
+
+    @Override
+    public Long getCarCount() {
+        return carRepository.count();
+    }
+
+    @Override
+    public Long getVendorCount() {
+        Set<String> vendors = new HashSet<>();
+        carRepository.findAll().forEach(vendor -> vendors.add(vendor.getVendor()));
+        return (long) vendors.size();
+    }
 }

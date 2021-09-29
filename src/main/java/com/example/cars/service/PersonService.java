@@ -14,11 +14,11 @@ public interface PersonService {
     void delete();
 
     Optional<Person> findById(long id);
-//
-//    Message peek();
-//
-//    Message peekMax();
-//
-//    List<Message> all();
+
+    Long getPersonCount();
+
+    Long getCarCount();
+
+    Long getVendorCount();
 
 }

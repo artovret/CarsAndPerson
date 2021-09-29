@@ -22,7 +22,7 @@ public class Person {
     @Column(name = "birthdate")
     private Date birthdate;
 
-    @OneToMany(mappedBy = "person_id",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "person_id", cascade = CascadeType.ALL)
 //    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Car> cars;
 }

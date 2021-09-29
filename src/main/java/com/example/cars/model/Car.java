@@ -22,6 +22,9 @@ public class Car {
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "vendor")
+    private String vendor;
+
     @Column(name = "model")
     private String model;
 

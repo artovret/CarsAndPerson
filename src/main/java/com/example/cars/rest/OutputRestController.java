@@ -1,13 +1,15 @@
 package com.example.cars.rest;
 
+import com.example.cars.dto.StatisticsDto;
 import com.example.cars.service.PersonService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 //
 //(поля: id – integer, msg – сообщение, 4к символов) (методы
@@ -53,9 +55,23 @@ public class OutputRestController {
     }
 
     @GetMapping("/personwithcars")
-    public ResponseEntity getPerson(@RequestParam("personid")  Long id) {
+    public ResponseEntity getPerson(@RequestParam("personid") Long id) {
         try {
             return new ResponseEntity<>(personService.findById(id), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+    }
+
+    @GetMapping("/statistics")
+    public ResponseEntity getStatistics() {
+        try {
+            return new ResponseEntity<>(
+                    StatisticsDto.getStatisticsDto(
+                            personService.getPersonCount(),
+                            personService.getCarCount(),
+                            personService.getVendorCount()),
+                    HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

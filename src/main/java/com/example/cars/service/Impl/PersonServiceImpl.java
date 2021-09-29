@@ -59,4 +59,9 @@ public class PersonServiceImpl implements PersonService {
         carRepository.findAll().forEach(vendor -> vendors.add(vendor.getVendor()));
         return (long) vendors.size();
     }
+
+    @Override
+    public Optional<Car> findCarById(long id) {
+        return carRepository.findById(id);
+    }
 }

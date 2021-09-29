@@ -32,7 +32,7 @@ public class CarDto {
         }
         Car car = new Car();
         car.setId(carDto.getId());
-        String[] fullModel = carDto.getModel().split("-",2);
+        String[] fullModel = carDto.getModel().split("-", 2);
         car.setVendor(fullModel[0]);
         car.setModel(fullModel[1]);
         car.setHorsepower(carDto.getHorsepower());

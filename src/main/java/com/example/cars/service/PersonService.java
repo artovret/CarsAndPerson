@@ -21,4 +21,7 @@ public interface PersonService {
 
     Long getVendorCount();
 
+    Optional<Car> findCarById(long id);
+
+
 }

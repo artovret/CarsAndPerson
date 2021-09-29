@@ -19,7 +19,6 @@ import javax.persistence.*;
 @Data
 public class Car {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "vendor")

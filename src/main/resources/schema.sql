@@ -1,6 +1,6 @@
 insert into persons (id, name, birthdate)
 values (1, 'Arti', '1994-11-11'),
-       (2, 'Max', '19841212'),
+       (2, 'Max', '2020,12,12'),
        (33, 'Vlad', '1992-05-05');
 
 insert into cars (id, vendor, model, power, person_id)

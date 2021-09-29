@@ -5,6 +5,7 @@ import com.example.cars.dto.CarDto;
 import com.example.cars.dto.PersonDto;
 import com.example.cars.exceptions.ValidateException;
 import com.example.cars.service.PersonService;
+import com.example.cars.util.AgeCalculator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -28,7 +29,8 @@ public class InputRestController {
     public ResponseEntity addCar(@RequestBody CarDto carDto) {
         Map<Object, Object> response = new HashMap<>();
         try {
-            if (personService.findCarById(carDto.getId()).isPresent()) {
+            if (personService.findCarById(carDto.getId()).isPresent() ||
+                    AgeCalculator.calculateAge(PersonDto.fromPerson(personService.findById(carDto.getOwnerId()).get()).getBirthdate()) < 18) {
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             }
             response.put("car", personService.put(CarDto.toCar(carDto)));
